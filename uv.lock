@@ -702,6 +702,32 @@ wheels = [
 ]
 
 [[package]]
+name = "prometheus-aioexporter"
+version = "3.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "click" },
+    { name = "prometheus-client" },
+    { name = "python-dotenv" },
+    { name = "rich" },
+    { name = "structlog" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c7/e0/0cb89a6f43ff327d32dc699bfe5d2ba3dbad1504e11e4d33c6827197e9aa/prometheus_aioexporter-3.0.1.tar.gz", hash = "sha256:36e41e8e25654cfdbee1bc72e22c2451508b20c027a2e0a6893f140062202dca", size = 18957 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/78/04/f2bdbcf0a7bfe20eae3034d3bc1d271e029797d889ce036fa58bea291b59/prometheus_aioexporter-3.0.1-py3-none-any.whl", hash = "sha256:caa9b742db7e766b484a0058c023264455decdbe7c777d6a76f535b77a8f6c92", size = 17897 },
+]
+
+[[package]]
+name = "prometheus-client"
+version = "0.21.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/62/14/7d0f567991f3a9af8d1cd4f619040c93b68f09a02b6d0b6ab1b2d1ded5fe/prometheus_client-0.21.1.tar.gz", hash = "sha256:252505a722ac04b0456be05c05f75f45d760c2911ffc45f2a06bcaed9f3ae3fb", size = 78551 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ff/c2/ab7d37426c179ceb9aeb109a85cda8948bb269b7561a0be870cc656eefe4/prometheus_client-0.21.1-py3-none-any.whl", hash = "sha256:594b45c410d6f4f8888940fe80b5cc2521b305a1fafe1c58609ef715a001f301", size = 54682 },
+]
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.50"
 source = { registry = "https://pypi.org/simple" }
@@ -850,6 +876,15 @@ wheels = [
 ]
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca", size = 39115 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6a/3e/b68c118422ec867fa7ab88444e1274aa40681c606d59ac27de5a5588f082/python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a", size = 19863 },
+]
+
+[[package]]
 name = "pywin32"
 version = "308"
 source = { registry = "https://pypi.org/simple" }
@@ -951,6 +986,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/28/e3/55dcc2cfbc3ca9c29519eb6884dd1415ecb53b0e934862d3559ddcb7e20b/stack_data-0.6.3.tar.gz", hash = "sha256:836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9", size = 44707 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f1/7b/ce1eafaf1a76852e2ec9b22edecf1daa58175c090266e9f6c64afcd81d91/stack_data-0.6.3-py3-none-any.whl", hash = "sha256:d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695", size = 24521 },
+]
+
+[[package]]
+name = "structlog"
+version = "25.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/25/fe/578db23e17392a8693b45a7b7dc6985370f51dd937157def8ecc7b20930d/structlog-25.1.0.tar.gz", hash = "sha256:2ef2a572e0e27f09664965d31a576afe64e46ac6084ef5cec3c2b8cd6e4e3ad3", size = 1364973 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c1/14/e9aed6c820fa166e8a19a19e663e98bd5538004d68a70c5752458ca3656e/structlog-25.1.0-py3-none-any.whl", hash = "sha256:843fe4f254540329f380812cbe612e1af5ec5b8172205ae634679cd35a6d6321", size = 68921 },
 ]
 
 [[package]]
@@ -1114,6 +1158,8 @@ dependencies = [
     { name = "click" },
     { name = "matplotlib" },
     { name = "networkx" },
+    { name = "prometheus-aioexporter" },
+    { name = "prometheus-client" },
     { name = "pydantic" },
     { name = "scipy" },
     { name = "textual" },
@@ -1132,6 +1178,8 @@ requires-dist = [
     { name = "click", specifier = ">=8.1.8" },
     { name = "matplotlib", specifier = ">=3.10.0" },
     { name = "networkx", specifier = ">=3.4.2" },
+    { name = "prometheus-aioexporter", specifier = ">=3.0.1" },
+    { name = "prometheus-client", specifier = ">=0.21.1" },
     { name = "pydantic", specifier = ">=2.10.6" },
     { name = "scipy", specifier = ">=1.15.1" },
     { name = "textual", specifier = ">=1.0.0" },

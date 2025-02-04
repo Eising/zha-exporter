@@ -12,6 +12,8 @@ dependencies = [
     "click>=8.1.8",
     "matplotlib>=3.10.0",
     "networkx>=3.4.2",
+    "prometheus-aioexporter>=3.0.1",
+    "prometheus-client>=0.21.1",
     "pydantic>=2.10.6",
     "scipy>=1.15.1",
     "textual>=1.0.0",
@@ -22,6 +24,7 @@ dependencies = [
 
 [project.scripts]
 device-manager = "zha_device_manager.command_line:cli"
+zha-exporter = "zha_exporter.exporter:script"
 
 [build-system]
 requires = ["hatchling"]
