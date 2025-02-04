@@ -1,7 +1,7 @@
 [project]
-name = "zha-device-manager"
+name = "zha-exporter"
 version = "0.1.0"
-description = "Add your description here"
+description = "Zigbee for Home Assistant Prometheus Exporter"
 readme = "README.md"
 authors = [
     { name = "Allan Eising", email = "allan@eising.dk" }
@@ -10,20 +10,14 @@ requires-python = ">=3.13"
 dependencies = [
     "asyncio>=3.4.3",
     "click>=8.1.8",
-    "matplotlib>=3.10.0",
-    "networkx>=3.4.2",
     "prometheus-aioexporter>=3.0.1",
     "prometheus-client>=0.21.1",
     "pydantic>=2.10.6",
-    "scipy>=1.15.1",
-    "textual>=1.0.0",
-    "textual-dev>=1.7.0",
     "websockets>=14.2",
 ]
 
 
 [project.scripts]
-device-manager = "zha_device_manager.command_line:cli"
 zha-exporter = "zha_exporter.exporter:script"
 
 [build-system]

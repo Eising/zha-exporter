@@ -7,8 +7,6 @@ of simpler dataclasses. I'm using the latter approach for now.
 from pydantic import BaseModel, Field
 from typing import Any
 
-from .utils import format_like_cisco
-
 
 class EndpointNames(BaseModel):
     """Endpoint names."""
@@ -76,14 +74,6 @@ class DeviceInfo(BaseModel):
 
     endpoint_names: list[EndpointNames] | None = None
     signature: dict[str, Any] = Field(default_factory=dict)
-
-    def as_cisco(self) -> str:
-        """Format as cisco."""
-        obj = self.model_dump()
-        if "signature" in obj:
-            del obj["signature"]
-
-        return format_like_cisco("device", obj, "ieee", {"neighbors": "ieee", "routes": "dest_nwk"})
 
 
 class ZDMConfig(BaseModel):
