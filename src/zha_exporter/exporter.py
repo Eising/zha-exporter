@@ -10,8 +10,7 @@ from prometheus_aioexporter import Arguments, PrometheusExporterScript, MetricCo
 from prometheus_client import (Gauge, Enum)
 from prometheus_client.metrics import MetricWrapperBase
 
-from zha_device_manager.types import DeviceInfo
-from zha_device_manager.client import DeviceManager
+from .client import DeviceManager
 
 # Somehow I want to easily convert my Pydantic class into a series of metrics.
 # But let's try the naive approach first
