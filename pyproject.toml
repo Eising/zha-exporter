@@ -1,6 +1,6 @@
 [project]
 name = "zha-exporter"
-version = "0.1.0"
+version = "0.2.0"
 description = "Zigbee for Home Assistant Prometheus Exporter"
 readme = "README.md"
 authors = [
