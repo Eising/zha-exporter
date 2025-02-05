@@ -111,7 +111,7 @@ class ZhaExporter(PrometheusExporterScript):
         hostname = config.hostname
         assert isinstance(hostname, str)
         port = config.port
-        assert isinstance(port, str)
+        assert isinstance(port, (str, int))
         api_token = config.token
         assert isinstance(api_token, str)
         lqi = cast(Gauge, metrics["zha_lqi_info"])
@@ -120,7 +120,9 @@ class ZhaExporter(PrometheusExporterScript):
         neighbor_count = cast(Gauge, metrics["zha_neighbor_count"])
         route_count = cast(Gauge, metrics["zha_route_count"])
 
-        async with DeviceManager.connect(hostname, port, api_token) as device_manager:
+        async with DeviceManager.connect(
+            hostname, str(port), api_token
+        ) as device_manager:
             devices = await device_manager.get_devices()
             for device in devices:
                 lqi.labels(
