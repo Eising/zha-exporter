@@ -76,7 +76,7 @@ class DeviceInfo(BaseModel):
     signature: dict[str, Any] = Field(default_factory=dict)
 
 
-class ZDMConfig(BaseModel):
+class ExporterConfig(BaseModel):
     """Model for the config file."""
 
     hostname: str
