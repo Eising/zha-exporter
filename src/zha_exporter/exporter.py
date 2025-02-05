@@ -95,7 +95,9 @@ class ZhaExporter(PrometheusExporterScript):
 
         assert "zha-exporter" in config_dict
 
-        self._exporter_config = ExporterConfig.model_validate(config_dict)
+        self._exporter_config = ExporterConfig.model_validate(
+            config_dict["zha-exporter"]
+        )
 
     @override
     async def on_application_startup(self, application: Application) -> None:
