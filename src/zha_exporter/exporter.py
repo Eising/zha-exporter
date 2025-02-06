@@ -55,17 +55,17 @@ class ZhaExporter(PrometheusExporterScript):
     @override
     def configure(self, args: Arguments) -> None:
         """Configure the application."""
-        labels = ("ieee", "user_given_name", "nwk", "area_id", "device_type")
+        labels = ("ieee", "area_id", "device_type")
         self.create_metrics(
             [
                 MetricConfig(
-                    "zha_lqi_info", "Link Quality Indication", "gauge", labels
+                    "zha_link_quality", "Link Quality Indication", "gauge", labels
                 ),
                 MetricConfig(
-                    "zha_rssi_db", "Received Signal Strength", "gauge", labels
+                    "zha_rssi_dbm", "Received Signal Strength", "gauge", labels
                 ),
                 MetricConfig(
-                    "zha_device_state_info",
+                    "zha_device_status",
                     "Device State",
                     "enum",
                     labels=labels,
@@ -128,37 +128,27 @@ class ZhaExporter(PrometheusExporterScript):
             for device in devices:
                 lqi.labels(
                     ieee=device.ieee,
-                    user_given_name=device.user_given_name,
-                    nwk=device.nwk,
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).set(device.lqi)
                 rssi.labels(
                     ieee=device.ieee,
-                    user_given_name=device.user_given_name,
-                    nwk=device.nwk,
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).set(device.rssi)
                 device_state_val = "available" if device.available else "unavailable"
                 device_state.labels(
                     ieee=device.ieee,
-                    user_given_name=device.user_given_name,
-                    nwk=device.nwk,
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).state(device_state_val)
                 neighbor_count.labels(
                     ieee=device.ieee,
-                    user_given_name=device.user_given_name,
-                    nwk=device.nwk,
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).set(len(device.neighbors))
                 route_count.labels(
                     ieee=device.ieee,
-                    user_given_name=device.user_given_name,
-                    nwk=device.nwk,
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).set(len(device.routes))
