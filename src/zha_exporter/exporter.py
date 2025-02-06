@@ -67,9 +67,8 @@ class ZhaExporter(PrometheusExporterScript):
                 MetricConfig(
                     "zha_device_status",
                     "Device State",
-                    "enum",
+                    "gauge",
                     labels=labels,
-                    config={"states": ["available", "unavailable"]},
                 ),
                 MetricConfig(
                     "zha_neighbor_count",
@@ -116,7 +115,7 @@ class ZhaExporter(PrometheusExporterScript):
         assert isinstance(api_token, str)
         lqi = cast(Gauge, metrics["zha_link_quality"])
         rssi = cast(Gauge, metrics["zha_rssi_dbm"])
-        device_state = cast(Enum, metrics["zha_device_status"])
+        device_state = cast(Gauge, metrics["zha_device_status"])
         neighbor_count = cast(Gauge, metrics["zha_neighbor_count"])
         route_count = cast(Gauge, metrics["zha_route_count"])
 
@@ -136,12 +135,12 @@ class ZhaExporter(PrometheusExporterScript):
                     area_id=device.area_id,
                     device_type=device.device_type,
                 ).set(device.rssi)
-                device_state_val = "available" if device.available else "unavailable"
+                device_state_val = 1 if device.available else 0
                 device_state.labels(
                     ieee=device.ieee,
                     area_id=device.area_id,
                     device_type=device.device_type,
-                ).state(device_state_val)
+                ).set(device_state_val)
                 neighbor_count.labels(
                     ieee=device.ieee,
                     area_id=device.area_id,
