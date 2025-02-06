@@ -114,9 +114,9 @@ class ZhaExporter(PrometheusExporterScript):
         assert isinstance(port, (str, int))
         api_token = config.token
         assert isinstance(api_token, str)
-        lqi = cast(Gauge, metrics["zha_lqi_info"])
-        rssi = cast(Gauge, metrics["zha_rssi_db"])
-        device_state = cast(Enum, metrics["zha_device_state_info"])
+        lqi = cast(Gauge, metrics["zha_link_quality"])
+        rssi = cast(Gauge, metrics["zha_rssi_dbm"])
+        device_state = cast(Enum, metrics["zha_device_status"])
         neighbor_count = cast(Gauge, metrics["zha_neighbor_count"])
         route_count = cast(Gauge, metrics["zha_route_count"])
 
