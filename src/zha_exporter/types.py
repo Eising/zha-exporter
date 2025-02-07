@@ -4,7 +4,7 @@ I could import most of ZHA and re-use the types here, or simplify down to a set
 of simpler dataclasses. I'm using the latter approach for now.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 from typing import Any
 
 
@@ -60,8 +60,8 @@ class DeviceInfo(BaseModel):
     quirk_id: str | None
     manufacturer_code: int | None
     power_source: str
-    lqi: int
-    rssi: int
+    lqi: int | None
+    rssi: int | None
     last_seen: str
     available: bool
     device_type: str
@@ -74,6 +74,19 @@ class DeviceInfo(BaseModel):
 
     endpoint_names: list[EndpointNames] | None = None
     signature: dict[str, Any] = Field(default_factory=dict)
+
+    @computed_field
+    @property
+    def nwk_hex(self) -> str:
+        """Return nwk as hexadecimal."""
+        if isinstance(self.nwk, str) and self.nwk.startswith("0x"):
+            return self.nwk
+        if isinstance(self.nwk, str) and self.nwk.isdecimal():
+            num = int(self.nwk)
+            return hex(num)
+        if isinstance(self.nwk, int):
+            return hex(self.nwk)
+        raise ValueError("Unable to convert nwk to hex.")
 
 
 class ExporterConfig(BaseModel):
