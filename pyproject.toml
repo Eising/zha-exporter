@@ -1,6 +1,6 @@
 [project]
 name = "zha-exporter"
-version = "0.3.6"
+version = "0.3.7"
 description = "Zigbee for Home Assistant Prometheus Exporter"
 readme = "README.md"
 authors = [
@@ -10,6 +10,7 @@ requires-python = ">=3.11"
 dependencies = [
     "asyncio>=3.4.3",
     "click>=8.1.8",
+    "networkx>=3.4.2",
     "prometheus-aioexporter>=3.0.1",
     "prometheus-client>=0.21.1",
     "pydantic>=2.10.6",
