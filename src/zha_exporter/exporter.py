@@ -129,12 +129,12 @@ class ZhaExporter(PrometheusExporterScript):
                     ieee=device.ieee,
                     area_id=device.area_id,
                     device_type=device.device_type,
-                ).set(device.lqi)
+                ).set(device.lqi or 0)
                 rssi.labels(
                     ieee=device.ieee,
                     area_id=device.area_id,
                     device_type=device.device_type,
-                ).set(device.rssi)
+                ).set(device.rssi or -100)
                 device_state_val = 1 if device.available else 0
                 device_state.labels(
                     ieee=device.ieee,
